@@ -1,0 +1,52 @@
+<ui:composition template="/WEB-INF/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:c="http://java.sun.com/jsf/html">
+
+    <ui:define name="css">
+        <style type="text/css">
+            .dropzone
+            {
+                border:2px dashed #ccc;
+                width:300px;
+                height:300px;
+                color:#ccc;
+                line-height: 300px;
+                text-align: center;
+            }
+            .dragover
+            {
+                border : 2px dashed #000;
+                width : 300px;
+                height : 300px;
+                line-height : 300px;
+                text-align : center;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="title">
+        mewpipe - Home Page
+    </ui:define>
+
+    <ui:define name="content">
+        <div id="username" >${sessionScope.user.name}</div>
+        <div id="userid" >${sessionScope.user.id}</div>
+        <div id="dropzone" class="dropzone">Drop files to upload</div>
+        <!--<h:commandLink action="#{userController.myChannelPage()}" value="Profile" />-->
+
+        <ui:repeat value="#{videoController.getUserVideos(sessionScope.user.id)}" var="video">
+            <div>
+                <video width="800" height="600" controls>
+                    <source src="mov_bbb.mp4" type="video/mp4"></source>
+                    <source src="mov_bbb.ogg" type="video/ogg"></source>
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+        </ui:repeat>
+
+        <script src="user.js" type="text/javascript"></script>
+
+    </ui:define>
+</ui:composition>
