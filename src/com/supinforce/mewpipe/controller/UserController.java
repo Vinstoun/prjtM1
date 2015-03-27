@@ -84,7 +84,10 @@ public class UserController {
         FacesContext.getCurrentInstance().getExternalContext().redirect("/mewpipe/user.xhtml");
     }
 
-    public List<Video> getMyVideo
+    public List<Video> getMyVideo()
+    {
+        return null;
+    }
     public String getName() {
         return name;
     }
